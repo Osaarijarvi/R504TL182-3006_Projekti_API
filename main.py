@@ -33,16 +33,15 @@ def get_localities():
     return jsonify(localities)
 
 #Showing locations
-# TODO: FI Characters are not shown correctly, fix the database?
 @app.route('/api/locations', methods=['GET'])
 def get_locations():
     locations = postgres.locations.get_locations()
     return jsonify(locations)
 
 #Showing sensors
-# TODO: Special Characters are not shown correctly, fix the database?
 @app.route('/api/sensors', methods=['GET'])
 def get_sensors():
+
     sensors = postgres.sensors.get_sensors()
     return jsonify(sensors)
 
