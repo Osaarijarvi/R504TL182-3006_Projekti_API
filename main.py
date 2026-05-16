@@ -60,6 +60,25 @@ def get_number_of_all_readings():
     return jsonify(readings_count)
 
 
+#Showing daily average values of a chosen sensor using sensors_id
+# Sensor_ids: o3 = 26979, pm10 = 11415, no2 = 11420, so2 = 27064, pm25 = 11401
+@app.route('/api/readings/sensor/<sensors_id>/avg_values/daily', methods=['GET'])
+def get_avg_values_daily_chosen_sensor_sensorsId(sensors_id):
+
+    avg_values_daily = postgres.readings.get_avg_values_daily_chosen_sensor_sensorsId(sensors_id)
+    return jsonify(avg_values_daily)
+
+
+
+#Showing daily average values of a chosen sensor using parameter
+# Parameters: o3 = 26979, pm10 = 11415, no2 = 11420, so2 = 27064, pm25 = 11401
+@app.route('/api/readings/parameter/<parameter>/avg_values/daily', methods=['GET'])
+def get_avg_values_daily_chosen_sensor_parameter(parameter):
+
+    avg_values_daily = postgres.readings.get_avg_values_daily_chosen_sensor_parameter(parameter)
+    return jsonify(avg_values_daily)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
     #debug=True, port=6000)
