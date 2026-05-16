@@ -52,7 +52,12 @@ def get_readings_hourly_chosen_day(date_day):
     readings_hourly = postgres.readings.get_readings_hourly_chosen_day(date_day)
     return jsonify(readings_hourly)
 
+#Showing the number of all readings
+@app.route('/api/readings/count', methods=['GET'])
+def get_number_of_all_readings():
 
+    readings_count = postgres.readings.get_number_of_all_readings()
+    return jsonify(readings_count)
 
 
 if __name__ == '__main__':
