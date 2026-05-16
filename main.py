@@ -45,6 +45,15 @@ def get_sensors():
     sensors = postgres.sensors.get_sensors()
     return jsonify(sensors)
 
+#Showing all readings hourly on a chosen day
+@app.route('/api/readings/<date_day>/all_readings/hourly', methods=['GET'])
+def get_readings_hourly_chosen_day(date_day):
+
+    readings_hourly = postgres.readings.get_readings_hourly_chosen_day(date_day)
+    return jsonify(readings_hourly)
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
