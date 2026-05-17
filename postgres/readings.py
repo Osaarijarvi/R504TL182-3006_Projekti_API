@@ -30,7 +30,8 @@ def get_number_of_all_readings():
             readings_count = cursor.fetchall()
             return readings_count
 
-# Daily avg values: choosing sensor with sensors_id
+
+# Daily avg values: choosing sensor by sensors_id
 def get_avg_values_daily_chosen_sensor_sensorsId(sensors_id):
     with psycopg2.connect(database=os.getenv('PG_DB'),
                           user=os.getenv('PG_USER'),
@@ -46,7 +47,7 @@ def get_avg_values_daily_chosen_sensor_sensorsId(sensors_id):
             return avg_values_daily
 
 
-# Daily avgs value: choosing sensor with parameter
+# Daily avg values: choosing sensor by parameter
 def get_avg_values_daily_chosen_sensor_parameter(parameter):
     with psycopg2.connect(database=os.getenv('PG_DB'),
                           user=os.getenv('PG_USER'),
@@ -60,3 +61,18 @@ def get_avg_values_daily_chosen_sensor_parameter(parameter):
 
             avg_values_daily = cursor.fetchall()
             return avg_values_daily
+
+"""
+# Daily avg values: all values
+def get_avg_values_daily():
+    with psycopg2.connect(database=os.getenv('PG_DB'),
+                          user=os.getenv('PG_USER'),
+                          password=os.getenv('PG_PWD')) as conn:
+
+        with conn.cursor(cursor_factory=RealDictCursor) as cursor:
+            _query = ('SELECT parameter, AVG(value) AS avg_value FROM readings '
+                      'GROUP BY parameter;')
+            cursor.execute(_query)
+            avg_values_daily = cursor.fetchall()
+            return avg_values_daily
+"""
