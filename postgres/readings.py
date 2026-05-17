@@ -62,9 +62,8 @@ def get_avg_values_daily_chosen_sensor_parameter(parameter):
             avg_values_daily = cursor.fetchall()
             return avg_values_daily
 
-"""
-# Daily avg values: all values
-def get_avg_values_daily():
+
+def get_avg_values():
     with psycopg2.connect(database=os.getenv('PG_DB'),
                           user=os.getenv('PG_USER'),
                           password=os.getenv('PG_PWD')) as conn:
@@ -73,6 +72,5 @@ def get_avg_values_daily():
             _query = ('SELECT parameter, AVG(value) AS avg_value FROM readings '
                       'GROUP BY parameter;')
             cursor.execute(_query)
-            avg_values_daily = cursor.fetchall()
-            return avg_values_daily
-"""
+            avg_values = cursor.fetchall()
+            return avg_values

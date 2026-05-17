@@ -86,14 +86,14 @@ def get_avg_values_daily_chosen_sensor_parameter(parameter):
 
 # OPETTAJALLE KYSYMYS: miksi tästä tulee RecursionError? Yritänkö hakea liikaa dataa?
 # Pistin kommentteihin, ettei kaada ohjelmaa.
-"""
-# Showing all avg values daily
-@app.route('/api/readings/avg_values/daily', methods=['GET'])
-def get_avg_values_daily():
 
-    avg_values_daily = get_avg_values_daily()
-    return jsonify(avg_values_daily)
-"""
+# Showing all avg values of each parameter
+@app.route('/api/readings/avg_values/', methods=['GET'])
+def get_avg_values():
+
+    avg_values = get_avg_values()
+    return jsonify(avg_values)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
