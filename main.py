@@ -49,7 +49,7 @@ def get_sensors():
     sensors = postgres.sensors.get_sensors()
     return jsonify(sensors)
 
-# OPETTAJALLE KYSYMYS: Miksi tämä palauttaa saman datan, vaikka urliin vaihtaa päivän?
+
 # Showing all readings hourly on a chosen day
 @app.route('/api/readings/<date_day>/all_readings/hourly', methods=['GET'])
 def get_readings_hourly_chosen_day(date_day):
@@ -84,14 +84,11 @@ def get_avg_values_daily_chosen_sensor_parameter(parameter):
     return jsonify(avg_values_daily)
 
 
-# OPETTAJALLE KYSYMYS: miksi tästä tulee RecursionError? Yritänkö hakea liikaa dataa?
-# Pistin kommentteihin, ettei kaada ohjelmaa.
-
 # Showing all avg values of each parameter
 @app.route('/api/readings/avg_values/', methods=['GET'])
 def get_avg_values():
 
-    avg_values = get_avg_values()
+    avg_values = postgres.readings.get_avg_values()
     return jsonify(avg_values)
 
 
